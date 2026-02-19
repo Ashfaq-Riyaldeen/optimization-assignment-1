@@ -1,0 +1,23 @@
+\contentsline {section}{\numberline {1}HPC Cloud Server Resource Allocation (Knapsack Problem)}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Scenario}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Resource Abstraction: vCPU Unit}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Mathematical Formulation}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Dynamic Programming Formulation}{3}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Stage 3: ML Inference Server (w3 = 9, r3 = Rs. 25{,}000)}{4}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}Stage 2: Mobile API Server + ML Inference (w2 = 5, r2 = Rs. 12{,}000)}{4}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.7}Stage 1: All Application Types (Capacity = 20 vCPU)}{5}{subsection.1.7}%
+\contentsline {subsection}{\numberline {1.8}Traceback: Recovering the Optimal Solution}{5}{subsection.1.8}%
+\contentsline {subsection}{\numberline {1.9}Optimal Solution}{6}{subsection.1.9}%
+\contentsline {subsection}{\numberline {1.10}Why Greedy Fails}{6}{subsection.1.10}%
+\contentsline {section}{\numberline {2}Network Optimization Using the Reverse-Delete MST Algorithm}{7}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Emergency Fiber Network for Disaster Response}{7}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Graph Model}{7}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Facilities (Vertices)}{7}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Candidate Fiber Links (Edges with Costs)}{7}{subsubsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.3}Selected MST Technique: Reverse-Delete Algorithm}{8}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Steps}{8}{subsubsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.4}Step-by-Step Application of Reverse-Delete}{8}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Edge Order (Descending)}{8}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}Reverse-Delete Decision Table}{9}{subsubsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.5}Final MST and Minimum Total Cost}{9}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Graph Overview}{10}{subsection.2.6}%
