@@ -85,7 +85,7 @@ High-Performance Computing (HPC) server that can host managed application instan
 The server has a limited compute capacity shared among all hosted applications.
 
 LankaCloud offers three types of managed application hosting packages:
-
+\vspace{1em}
 \begin{center}
 \begin{tabular}{|c|l|c|c|}
 \hline
@@ -95,7 +95,7 @@ $k$ & Application Type & vCPU per instance & Monthly Profit per instance \\ \hli
 3 & ML Inference Server & 9 vCPU & Rs. 25{,}000 \\ \hline
 \end{tabular}
 \end{center}
-
+\vspace{1em}
 The HPC server has a total capacity of \textbf{20 vCPU units}. Multiple instances of the same application
 type may be hosted simultaneously. LankaCloud wants to determine how many instances of each application
 type to host in order to \textbf{maximise total monthly profit}, subject to the server's capacity limit.
@@ -121,7 +121,7 @@ Total server capacity: 40 CPU cores / 80 GB RAM / 400 GB storage = \textbf{20 vC
     \item $w_1 = 3,\; w_2 = 5,\; w_3 = 9$ (vCPU consumed per instance)
     \item $r_1 = 7{,}000,\; r_2 = 12{,}000,\; r_3 = 25{,}000$ (monthly profit in Rs. per instance)
 \end{itemize}
-\vspace{1em}
+
 \textbf{Decision Variables:}
 \begin{itemize}
     \item $x_k$ = number of instances of application type $k$ to host (non-negative integer), $k=1,2,3$
@@ -316,6 +316,8 @@ every feasible combination at each stage, so no capacity goes unused unnecessari
 \textbf{Scenario:} A country plans to connect several newly developed towns with
 railway tracks. Planners have identified feasible track corridors between towns, each with an
 estimated construction cost.
+\vspace{1em}
+
 
 \textbf{Objective:}
 \begin{itemize}
@@ -423,13 +425,13 @@ building a spanning tree; with 10 towns, the MST will have exactly 9 track segme
 
 \subsection{Selected MST Technique: Reverse-Delete Algorithm}
 
-For a connected, undirected, weighted graph $G=(V,E)$, an MST is a subset of edges $T\subseteq E$ that
-connects all vertices, contains no cycles, and minimizes total weight $\sum_{e \in T} w(e)$.
+For a connected, undirected, weighted graph, a minimum spanning tree is the set of edges that keeps
+all vertices connected, has no cycles, and has the lowest possible total cost.
 
-The Reverse-Delete algorithm works on the cycle property: within any cycle in the graph, the heaviest
-edge is not needed for the MST. Removing it still leaves every vertex reachable through the remaining
-edges in the cycle, just at a lower cost.
-
+The Reverse-Delete algorithm relies on the cycle property: in any cycle, the most expensive edge can
+be removed without disconnecting the graph. Removing it keeps all vertices reachable through the other
+edges in that cycle, but at a lower total cost.
+\clearpage
 \subsubsection{Steps}
 \begin{enumerate}
     \item Take the full graph with all candidate track segments.
@@ -449,7 +451,7 @@ Edges are processed from highest cost to lowest cost:
 
 \subsubsection{Reverse-Delete Decision Table}
 Each edge is checked in order. If removing it keeps the graph connected it gets deleted, otherwise it stays.
-
+\vspace{1em}
 \begingroup
 \small
 \setlength{\tabcolsep}{3pt}
@@ -462,34 +464,35 @@ Step & Edge & Cost & Decision & Connectivity check (reason) \\ \hline
 \endhead
 \hline
 \endfoot
-1 & H-G & 22 & REMOVE & H still reaches G via H-T-U-G. \\ \hline
-2 & M-B & 21 & REMOVE & M still reaches B via M-T-B (later replaced by M-T-U-B paths; at this step B connections still exist). \\ \hline
-3 & T-B & 20 & REMOVE & T still reaches B via T-U-B. \\ \hline
-4 & U-B & 19 & REMOVE & U still reaches B via U-W-B. \\ \hline
-5 & W-B & 18 & REMOVE & W still reaches B via W-U-G-F-B. \\ \hline
-6 & W-U & 17 & REMOVE & W still reaches U via W-S-H-T-U. \\ \hline
-7 & S-M & 16 & REMOVE & S still reaches M via S-H-T-M. \\ \hline
-8 & G-T & 15 & REMOVE & G still reaches T via G-U-T. \\ \hline
-9 & G-S & 14 & REMOVE & G still reaches S via G-U-T-H-S. \\ \hline
-10 & F-B & 13 & KEEP & If removed, B becomes isolated (all other B connections have already been deleted). \\ \hline
-11 & F-G & 12 & REMOVE & F still reaches G via F-H-T-U-G. \\ \hline
-12 & P-M & 11 & REMOVE & P still reaches M via P-F-H-T-M. \\ \hline
-13 & P-G & 10 & REMOVE & P still reaches G via P-F-H-T-U-G. \\ \hline
+1 & H-G & 22 & REMOVE & H still reaches G. \\ \hline
+2 & M-B & 21 & REMOVE & M still reaches B  \\ \hline
+3 & T-B & 20 & REMOVE & T still reaches B  \\ \hline
+4 & U-B & 19 & REMOVE & U still reaches B \\ \hline
+5 & W-B & 18 & REMOVE & W still reaches B  \\ \hline
+6 & W-U & 17 & REMOVE & W still reaches U  \\ \hline
+7 & S-M & 16 & REMOVE & S still reaches M \\ \hline
+8 & G-T & 15 & REMOVE & G still reaches T  \\ \hline
+9 & G-S & 14 & REMOVE & G still reaches S  \\ \hline
+10 & F-B & 13 & KEEP & If removed, B becomes isolated. \\ \hline
+11 & F-G & 12 & REMOVE & F still reaches G  \\ \hline
+12 & P-M & 11 & REMOVE & P still reaches M  \\ \hline
+13 & P-G & 10 & REMOVE & P still reaches G  \\ \hline
 14 & H-T & 9 & KEEP & If removed, the graph splits \{G,U,T,M\} from \{H,S,W,F,P,B\}. \\ \hline
-15 & H-P & 8 & REMOVE & H still reaches P via H-F-P. \\ \hline
+15 & H-P & 8 & REMOVE & H still reaches P  \\ \hline
 16 & H-F & 7 & KEEP & If removed, \{F,P,B\} disconnects from the rest. \\ \hline
 17 & H-S & 6 & KEEP & If removed, \{S,W\} disconnects (S has no other remaining connections). \\ \hline
-18 & P-F & 5 & KEEP & If removed, P becomes isolated (H-P already deleted). \\ \hline
-19 & G-U & 4 & KEEP & If removed, G becomes isolated (all other G connections were deleted). \\ \hline
-20 & S-W & 3 & KEEP & If removed, W becomes isolated (W-U and W-B were deleted). \\ \hline
+18 & P-F & 5 & KEEP & If removed, P becomes isolated. \\ \hline
+19 & G-U & 4 & KEEP & If removed, G becomes isolated. \\ \hline
+20 & S-W & 3 & KEEP & If removed, W becomes isolated. \\ \hline
 21 & U-T & 2 & KEEP & If removed, \{U,G\} disconnects from the rest. \\ \hline
-22 & T-M & 1 & KEEP & If removed, M becomes isolated (S-M and P-M were deleted). \\ \hline
+22 & T-M & 1 & KEEP & If removed, M becomes isolated. \\ \hline
 \end{longtable}
 \endgroup
+\vspace{1em}
 
 \subsection{Final MST and Minimum Total Construction Cost}
 After processing all edges, the remaining edges (marked KEEP) form the MST.
-
+\vspace{1em}
 \begin{center}
 \begin{tabular}{|c|c|}
 \hline
@@ -505,16 +508,16 @@ H-T & 9 \\ \hline
 F-B & 13 \\ \hline
 \end{tabular}
 \end{center}
-
+\vspace{1em}
 Total minimum construction cost $= 1 + 2 + 3 + 4 + 5 + 6 + 7 + 9 + 13 = 50$.
 
 One way to visualize the final tree (connectivity path) is:
 
 W - S - H - T - U - G, with branches H - F - P and F - B, and T - M.
-
+\clearpage
 \subsection{Graph Overview}
 The graphs below provide a visual summary of the Reverse-Delete decisions and the final MST structure.
-
+\vspace{1em}
 \textbf{Remove vs Keep Decisions:}
 \begin{center}
 \resizebox{\textwidth}{!}{%
@@ -572,12 +575,15 @@ The graphs below provide a visual summary of the Reverse-Delete decisions and th
 \end{tikzpicture}
 }%
 \end{center}
-
+\vspace{1em}
 Dashed track segments were removed because the railway network stayed connected without them.
 Solid segments are the ones that had to be kept. Removing any of them would have split the network.
 These 9 solid segments form the final MST with total cost 50.
+\clearpage
 
 \textbf{Final MST (selected track segments only):}
+
+\vspace{1em}
 \begin{center}
 \resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[
