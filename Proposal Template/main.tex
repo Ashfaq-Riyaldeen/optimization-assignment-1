@@ -363,6 +363,58 @@ U-T & 2 & T-M & 1 \\
 \end{tabular}
 \end{center}
 
+\subsubsection{Candidate Network Graph (Weighted)}
+The weighted graph below visualizes the surveyed fiber links (edge labels are costs):
+
+\begin{center}
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+    line cap=round,
+    line join=round,
+    transform shape,
+    facility/.style={circle,draw,line width=0.7pt,minimum size=8mm,inner sep=0pt,font=\small\bfseries,fill=white},
+    link/.style={draw=black!60,line width=0.75pt},
+    cost/.style={font=\scriptsize,fill=white,fill opacity=0.9,text opacity=1,inner sep=1.2pt}
+]
+    % Node layout (mapped from the provided custom graph coordinates)
+    \node[facility] (H) at (1.89, 5.60)  {H};
+    \node[facility] (G) at (0.68,-1.99)  {G};
+    \node[facility] (M) at (3.13, 1.53)  {M};
+    \node[facility] (B) at (4.32,-6.90)  {B};
+    \node[facility] (T) at (-4.30,0.11)  {T};
+    \node[facility] (U) at (-3.26,-8.04) {U};
+    \node[facility] (W) at (-5.60,-2.86) {W};
+    \node[facility] (S) at (-5.60,4.10)  {S};
+    \node[facility] (F) at (7.79,-2.22)  {F};
+    \node[facility] (P) at (7.06, 5.60)  {P};
+
+    % All candidate links (edges) with costs
+    \draw[link] (H) -- node[cost,pos=0.55,above] {22} (G);
+    \draw[link] (M) -- node[cost,pos=0.55,below] {21} (B);
+    \draw[link] (T) -- node[cost,pos=0.55,below] {20} (B);
+    \draw[link] (U) -- node[cost,pos=0.55,below] {19} (B);
+    \draw[link] (W) -- node[cost,pos=0.35,left]  {18} (B);
+    \draw[link] (W) -- node[cost,pos=0.55,above] {17} (U);
+    \draw[link] (S) -- node[cost,pos=0.55,below] {16} (M);
+    \draw[link] (G) -- node[cost,pos=0.55,below] {15} (T);
+    \draw[link] (G) -- node[cost,pos=0.55,above] {14} (S);
+    \draw[link] (F) -- node[cost,pos=0.55,left]  {13} (B);
+    \draw[link] (F) -- node[cost,pos=0.55,above] {12} (G);
+    \draw[link] (P) -- node[cost,pos=0.55,below] {11} (M);
+    \draw[link] (P) -- node[cost,pos=0.55,above] {10} (G);
+    \draw[link] (H) -- node[cost,pos=0.55,above] {9}  (T);
+    \draw[link] (H) -- node[cost,pos=0.45,above] {8}  (P);
+    \draw[link] (H) -- node[cost,pos=0.55,above] {7}  (F);
+    \draw[link] (H) -- node[cost,pos=0.55,right] {6}  (S);
+    \draw[link] (P) -- node[cost,pos=0.55,left]  {5}  (F);
+    \draw[link] (G) -- node[cost,pos=0.55,above] {4}  (U);
+    \draw[link] (S) -- node[cost,pos=0.55,above] {3}  (W);
+    \draw[link] (U) -- node[cost,pos=0.55,above right] {2} (T);
+    \draw[link] (T) -- node[cost,pos=0.55,right] {1}  (M);
+\end{tikzpicture}
+}%
+\end{center}
+
 This is essentially a Minimum Spanning Tree (MST) problem — we want the cheapest set of links
 that still keeps all 10 facilities connected. With 10 nodes, the spanning tree will always have
 exactly 9 edges.
@@ -467,24 +519,26 @@ The graphs below provide a visual summary of the Reverse-Delete decisions and th
 
 \textbf{Remove vs Keep Decisions:}
 \begin{center}
+\resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[
-    scale=0.82,
+    line cap=round,
+    line join=round,
     transform shape,
-    facility/.style={circle,draw,minimum size=7mm,inner sep=0pt,font=\small\bfseries,fill=white},
-    kept/.style={line width=1.1pt},
-    removed/.style={draw=gray,dashed,line width=0.7pt}
+    facility/.style={circle,draw,line width=0.7pt,minimum size=8mm,inner sep=0pt,font=\small\bfseries,fill=white},
+    kept/.style={draw=black,line width=1.6pt},
+    removed/.style={draw=gray,dashed,line width=1.0pt}
 ]
-    % Node layout follows MST tree: H is central hub
-    \node[facility] (H) at (0, 0)    {H};
-    \node[facility] (S) at (-1, 2)   {S};
-    \node[facility] (W) at (-2.5,3.5){W};
-    \node[facility] (F) at (-2,-1.5) {F};
-    \node[facility] (P) at (-3.5,0.5){P};
-    \node[facility] (B) at (-3.5,-2.5){B};
-    \node[facility] (T) at (2,-0.5)  {T};
-    \node[facility] (M) at (3,-2)    {M};
-    \node[facility] (U) at (3.5,1)   {U};
-    \node[facility] (G) at (5,2)     {G};
+    % Node layout (mapped from the provided custom graph coordinates)
+    \node[facility] (H) at (1.89, 5.60)  {H};
+    \node[facility] (G) at (0.68,-1.99)  {G};
+    \node[facility] (M) at (3.13, 1.53)  {M};
+    \node[facility] (B) at (4.32,-6.90)  {B};
+    \node[facility] (T) at (-4.30,0.11)  {T};
+    \node[facility] (U) at (-3.26,-8.04) {U};
+    \node[facility] (W) at (-5.60,-2.86) {W};
+    \node[facility] (S) at (-5.60,4.10)  {S};
+    \node[facility] (F) at (7.79,-2.22)  {F};
+    \node[facility] (P) at (7.06, 5.60)  {P};
 
     % Removed edges (dashed gray)
     \draw[removed] (H) -- (G);
@@ -512,12 +566,13 @@ The graphs below provide a visual summary of the Reverse-Delete decisions and th
     \draw[kept] (H) -- node[above]      {\footnotesize 9} (T);
     \draw[kept] (F) -- node[left]       {\footnotesize 13}(B);
 
-    % Legend (top-left, above W)
-    \draw[kept] (-3.5,4.5) -- (-2.5,4.5);
-    \node[anchor=west,font=\footnotesize] at (-2.4,4.5) {KEPT in MST};
-    \draw[removed] (-3.5,4.1) -- (-2.5,4.1);
-    \node[anchor=west,font=\footnotesize] at (-2.4,4.1) {REMOVED by Reverse-Delete};
+    % Legend (top-left)
+    \draw[kept] (-6.1,6.8) -- (-4.7,6.8);
+    \node[anchor=west,font=\footnotesize] at (-4.5,6.8) {KEPT in MST};
+    \draw[removed] (-6.1,6.2) -- (-4.7,6.2);
+    \node[anchor=west,font=\footnotesize] at (-4.5,6.2) {REMOVED by Reverse-Delete};
 \end{tikzpicture}
+}%
 \end{center}
 
 Dashed links were removed because the network stayed connected without them. Solid links
@@ -526,23 +581,25 @@ These 9 solid links form the final MST with total cost 50.
 
 \textbf{Final MST (selected links only):}
 \begin{center}
+\resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[
-    scale=0.82,
+    line cap=round,
+    line join=round,
     transform shape,
-    facility/.style={circle,draw,minimum size=7.5mm,inner sep=0pt,font=\small\bfseries,fill=white},
-    mst/.style={line width=1.2pt}
+    facility/.style={circle,draw,line width=0.7pt,minimum size=8mm,inner sep=0pt,font=\small\bfseries,fill=white},
+    mst/.style={line width=1.7pt}
 ]
     % Same layout as the Remove/Keep graph above
-    \node[facility] (H) at (0, 0)    {H};
-    \node[facility] (S) at (-1, 2)   {S};
-    \node[facility] (W) at (-2.5,3.5){W};
-    \node[facility] (F) at (-2,-1.5) {F};
-    \node[facility] (P) at (-3.5,0.5){P};
-    \node[facility] (B) at (-3.5,-2.5){B};
-    \node[facility] (T) at (2,-0.5)  {T};
-    \node[facility] (M) at (3,-2)    {M};
-    \node[facility] (U) at (3.5,1)   {U};
-    \node[facility] (G) at (5,2)     {G};
+    \node[facility] (H) at (1.89, 5.60)  {H};
+    \node[facility] (G) at (0.68,-1.99)  {G};
+    \node[facility] (M) at (3.13, 1.53)  {M};
+    \node[facility] (B) at (4.32,-6.90)  {B};
+    \node[facility] (T) at (-4.30,0.11)  {T};
+    \node[facility] (U) at (-3.26,-8.04) {U};
+    \node[facility] (W) at (-5.60,-2.86) {W};
+    \node[facility] (S) at (-5.60,4.10)  {S};
+    \node[facility] (F) at (7.79,-2.22)  {F};
+    \node[facility] (P) at (7.06, 5.60)  {P};
 
     \draw[mst] (T) -- node[right]      {1}  (M);
     \draw[mst] (U) -- node[above right]{2}  (T);
@@ -554,6 +611,7 @@ These 9 solid links form the final MST with total cost 50.
     \draw[mst] (H) -- node[above]      {9}  (T);
     \draw[mst] (F) -- node[left]       {13} (B);
 \end{tikzpicture}
+}%
 \end{center}
 
 \textbf{MST cost from the graph:} $1+2+3+4+5+6+7+9+13=50$.
