@@ -37,42 +37,42 @@
 \hypersetup{pageanchor=false}
 
 % --------- First Page (Cover Page) ---------
-\begin{titlepage}
-    \centering
+% \begin{titlepage}
+%     \centering
 
-    \vspace*{0.35cm}
+%     \vspace*{0.35cm}
 
-    \begin{minipage}[t][0.86\textheight][s]{0.92\textwidth}
-        \centering
-        \vspace*{0.15cm}
+%     \begin{minipage}[t][0.86\textheight][s]{0.92\textwidth}
+%         \centering
+%         \vspace*{0.15cm}
 
-        {\LARGE \textbf{University of Ruhuna}}\\[0.20cm]
-        {\Large \textbf{Faculty of Engineering}}\\[0.15cm]
-        \rule{0.78\textwidth}{0.8pt}
+%         {\LARGE \textbf{University of Ruhuna}}\\[0.20cm]
+%         {\Large \textbf{Faculty of Engineering}}\\[0.15cm]
+%         \rule{0.78\textwidth}{0.8pt}
 
-        \vfill
+%         \vfill
 
-        {\Large \textbf{Take Home Assignment}}\\[0.40cm]
-        {\huge \textbf{Assignment 1}}\\[0.20cm]
-        \vfill
+%         {\Large \textbf{Take Home Assignment}}\\[0.40cm]
+%         {\huge \textbf{Assignment 1}}\\[0.20cm]
+%         \vfill
 
-        {\Large \textbf{EE7220/EC7208}}\\[0.45cm]
-        {\huge \textbf{Optimization Techniques for Engineers}}
+%         {\Large \textbf{EE7220/EC7208}}\\[0.45cm]
+%         {\huge \textbf{Optimization Techniques for Engineers}}
 
 
-        \vfill
+%         \vfill
 
-        {\Large \textbf{Group Members}}\\[0.45cm]
-        \renewcommand{\arraystretch}{1.3}
-        \begin{tabular}{|>{\bfseries}p{0.14\textwidth}|p{0.52\textwidth}|p{0.24\textwidth}|}
-            \hline
-            01 & Ashfaq M.R.M & EG/2021/4417 \\ \hline
-            02 & Munsif M.F.A & EG/2021/4684 \\ \hline
-        \end{tabular}
-        \vspace*{0.15cm}
-    \end{minipage}
-    \vspace*{0.25cm}
-\end{titlepage}
+%         {\Large \textbf{Group Members}}\\[0.45cm]
+%         \renewcommand{\arraystretch}{1.3}
+%         \begin{tabular}{|>{\bfseries}p{0.14\textwidth}|p{0.52\textwidth}|p{0.24\textwidth}|}
+%             \hline
+%             01 & Ashfaq M.R.M & EG/2021/4417 \\ \hline
+%             02 & Munsif M.F.A & EG/2021/4684 \\ \hline
+%         \end{tabular}
+%         \vspace*{0.15cm}
+%     \end{minipage}
+%     \vspace*{0.25cm}
+% \end{titlepage}
 \hypersetup{pageanchor=true}
 \renewcommand{\arraystretch}{1.15}
 
@@ -81,7 +81,7 @@
 
 \subsection{Scenario}
 \textbf{LankaCloud Pvt Ltd} is a cloud computing provider based in Colombo, Sri Lanka. The company operates a
-High-Performance Computing (HPC) server that can host managed application instances for its clients.
+High Performance Computing (HPC) server that can host managed application instances for its clients.
 The server has a limited compute capacity shared among all hosted applications.
 
 LankaCloud offers three types of managed application hosting packages:
@@ -102,7 +102,7 @@ type to host in order to \textbf{maximise total monthly profit}, subject to the 
 
 \subsection{Resource Abstraction: vCPU Unit}
 Real HPC servers have multiple resource dimensions: CPU cores, RAM, and storage. To apply the standard
-single-constraint Knapsack formulation, all resources are unified into a single \textbf{virtual CPU (vCPU)}
+single constraint Knapsack formulation, all resources are unified into a single \textbf{virtual CPU (vCPU)}
 metric. Each vCPU unit represents a fixed bundle of:
 
 \begin{itemize}
@@ -124,7 +124,7 @@ Total server capacity: 40 CPU cores / 80 GB RAM / 400 GB storage = \textbf{20 vC
 
 \textbf{Decision Variables:}
 \begin{itemize}
-    \item $x_k$ = number of instances of application type $k$ to host (non-negative integer), $k=1,2,3$
+    \item $x_k$ = number of instances of application type $k$ to host (non negative integer), $k=1,2,3$
 \end{itemize}
 
 \textbf{Objective Function:}
@@ -216,13 +216,13 @@ $V_2(i)$ (Rs.) \\ \hline
 11 & 25{,}000 & 12{,}000 & 24{,}000 &  &  & 0 & 25{,}000 \\ \hline
 12 & 25{,}000 & 12{,}000 & 24{,}000 &  &  & 0 & 25{,}000 \\ \hline
 13 & 25{,}000 & 12{,}000 & 24{,}000 &  &  & 0 & 25{,}000 \\ \hline
-14 & 25{,}000 & \textbf{37{,}000} & 24{,}000 &  &  & 1 & 37{,}000 \\ \hline
-15 & 25{,}000 & \textbf{37{,}000} & 24{,}000 & 36{,}000 &  & 1 & 37{,}000 \\ \hline
-16 & 25{,}000 & \textbf{37{,}000} & 24{,}000 & 36{,}000 &  & 1 & 37{,}000 \\ \hline
-17 & 25{,}000 & \textbf{37{,}000} & 24{,}000 & 36{,}000 &  & 1 & 37{,}000 \\ \hline
-18 & \textbf{50{,}000} & 37{,}000 & 24{,}000 & 36{,}000 &  & 0 & 50{,}000 \\ \hline
-19 & \textbf{50{,}000} & 37{,}000 & 49{,}000 & 36{,}000 &  & 0 & 50{,}000 \\ \hline
-20 & \textbf{50{,}000} & 37{,}000 & 49{,}000 & 36{,}000 & 48{,}000 & 0 & 50{,}000 \\ \hline
+14 & 25{,}000 & 37{,}000 & 24{,}000 &  &  & 1 & 37{,}000 \\ \hline
+15 & 25{,}000 & 37{,}000 & 24{,}000 & 36{,}000 &  & 1 & 37{,}000 \\ \hline
+16 & 25{,}000 & 37{,}000 & 24{,}000 & 36{,}000 &  & 1 & 37{,}000 \\ \hline
+17 & 25{,}000 & 37{,}000 & 24{,}000 & 36{,}000 &  & 1 & 37{,}000 \\ \hline
+18 & 50{,}000 & 37{,}000 & 24{,}000 & 36{,}000 &  & 0 & 50{,}000 \\ \hline
+19 & 50{,}000 & 37{,}000 & 49{,}000 & 36{,}000 &  & 0 & 50{,}000 \\ \hline
+20 & 50{,}000 & 37{,}000 & 49{,}000 & 36{,}000 & 48{,}000 & 0 & 50{,}000 \\ \hline
 \end{tabular}
 }
 \end{center}
@@ -275,7 +275,7 @@ Maximum monthly profit: \\
 \end{quote}
 
 \subsection{Why Greedy Fails}
-A greedy approach ranks applications by profit-per-vCPU (value-to-weight ratio):
+A greedy approach ranks applications by profit per vCPU (value to weight ratio):
 \vspace{1em}
 \begin{center}
 \begin{tabular}{|l|c|c|}
@@ -310,7 +310,7 @@ So greedy wastes 2 vCPU and earns Rs. 1{,}000 less per month. The DP approach av
 every feasible combination at each stage, so no capacity goes unused unnecessarily.
 \clearpage
 
-\section{Network Optimization Using the Reverse-Delete MST Algorithm}
+\section{Network Optimization Using the Reverse Delete MST Algorithm}
 \subsection{Railway Track Expansion in a Developing Region}
 
 \textbf{Scenario:} A country plans to connect several newly developed towns with
@@ -326,7 +326,7 @@ estimated construction cost.
     \item Avoid circular routes during initial construction.
 \end{itemize}
 
-\textbf{Why it fits:} Railway planning often starts with minimum-cost connectivity before adding
+\textbf{Why it fits:} Railway planning often starts with minimum cost connectivity before adding
 redundancy later.
 
 \subsection{Graph Model}
@@ -353,17 +353,17 @@ Costs are expressed in generic construction cost units. The graph is undirected.
 \begin{tabular}{|c|c|c|c|}
 \hline
 Edge & Cost & Edge & Cost \\ \hline
-H-G & 22 & M-B & 21 \\ \hline
-T-B & 20 & U-B & 19 \\ \hline
-W-B & 18 & W-U & 17 \\ \hline
-S-M & 16 & G-T & 15 \\ \hline
-G-S & 14 & F-B & 13 \\ \hline
-F-G & 12 & P-M & 11 \\ \hline
-P-G & 10 & H-T & 9 \\ \hline
-H-P & 8 & H-F & 7 \\ \hline
-H-S & 6 & P-F & 5 \\ \hline
-G-U & 4 & S-W & 3 \\ \hline
-U-T & 2 & T-M & 1 \\ \hline
+H G & 22 & M B & 21 \\ \hline
+T B & 20 & U B & 19 \\ \hline
+W B & 18 & W U & 17 \\ \hline
+S M & 16 & G T & 15 \\ \hline
+G S & 14 & F B & 13 \\ \hline
+F G & 12 & P M & 11 \\ \hline
+P G & 10 & H T & 9 \\ \hline
+H P & 8 & H F & 7 \\ \hline
+H S & 6 & P F & 5 \\ \hline
+G U & 4 & S W & 3 \\ \hline
+U T & 2 & T M & 1 \\ \hline
 \end{tabular}
 \end{center}
 
@@ -421,22 +421,22 @@ The weighted graph below visualizes the candidate track segments (edge labels ar
 
 This is essentially a Minimum Spanning Tree (MST) problem. We want the cheapest set of track
 segments that still keeps all 10 towns connected. Avoiding circular routes corresponds to
-building a spanning tree; with 10 towns, the MST will have exactly 9 track segments.
+building a spanning tree with 10 towns, the MST will have exactly 9 track segments.
 
-\subsection{Selected MST Technique: Reverse-Delete Algorithm}
+\subsection{Selected MST Technique: Reverse Delete Algorithm}
 
 For a connected, undirected, weighted graph, a minimum spanning tree is the set of edges that keeps
 all vertices connected, has no cycles, and has the lowest possible total cost.
 
-The Reverse-Delete algorithm relies on the cycle property: in any cycle, the most expensive edge can
+The Reverse Delete algorithm relies on the cycle property. In any cycle, the most expensive edge can
 be removed without disconnecting the graph. Removing it keeps all vertices reachable through the other
-edges in that cycle, but at a lower total cost.
+edges in that cycle, but at a lower total cost
 \clearpage
 \subsubsection{Steps}
 \begin{enumerate}
     \item Take the full graph with all candidate track segments.
     \item Sort all edges from highest cost to lowest.
-    \item Go through each edge: try removing it. If the railway network is still connected, drop it for good.
+    \item Go through each edge, try removing it. If the railway network is still connected, drop it for good.
     If removing it disconnects anything, put it back and move on.
     \item Whatever edges remain at the end form the MST.
 \end{enumerate}
@@ -444,12 +444,12 @@ edges in that cycle, but at a lower total cost.
 This approach suits railway planning well. Planners can start from a full list of feasible track
 corridors, and the algorithm trims the expensive segments first without ever breaking connectivity.
 
-\subsection{Step-by-Step Application of Reverse-Delete}
+\subsection{Step by Step Application of Reverse Delete}
 \subsubsection{Edge Order (Descending)}
 Edges are processed from highest cost to lowest cost:
 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1.
 
-\subsubsection{Reverse-Delete Decision Table}
+\subsubsection{Reverse Delete Decision Table}
 Each edge is checked in order. If removing it keeps the graph connected it gets deleted, otherwise it stays.
 \vspace{1em}
 \begingroup
@@ -464,28 +464,28 @@ Step & Edge & Cost & Decision & Connectivity check (reason) \\ \hline
 \endhead
 \hline
 \endfoot
-1 & H-G & 22 & REMOVE & H still reaches G. \\ \hline
-2 & M-B & 21 & REMOVE & M still reaches B  \\ \hline
-3 & T-B & 20 & REMOVE & T still reaches B  \\ \hline
-4 & U-B & 19 & REMOVE & U still reaches B \\ \hline
-5 & W-B & 18 & REMOVE & W still reaches B  \\ \hline
-6 & W-U & 17 & REMOVE & W still reaches U  \\ \hline
-7 & S-M & 16 & REMOVE & S still reaches M \\ \hline
-8 & G-T & 15 & REMOVE & G still reaches T  \\ \hline
-9 & G-S & 14 & REMOVE & G still reaches S  \\ \hline
-10 & F-B & 13 & KEEP & If removed, B becomes isolated. \\ \hline
-11 & F-G & 12 & REMOVE & F still reaches G  \\ \hline
-12 & P-M & 11 & REMOVE & P still reaches M  \\ \hline
-13 & P-G & 10 & REMOVE & P still reaches G  \\ \hline
-14 & H-T & 9 & KEEP & If removed, the graph splits \{G,U,T,M\} from \{H,S,W,F,P,B\}. \\ \hline
-15 & H-P & 8 & REMOVE & H still reaches P  \\ \hline
-16 & H-F & 7 & KEEP & If removed, \{F,P,B\} disconnects from the rest. \\ \hline
-17 & H-S & 6 & KEEP & If removed, \{S,W\} disconnects (S has no other remaining connections). \\ \hline
-18 & P-F & 5 & KEEP & If removed, P becomes isolated. \\ \hline
-19 & G-U & 4 & KEEP & If removed, G becomes isolated. \\ \hline
-20 & S-W & 3 & KEEP & If removed, W becomes isolated. \\ \hline
-21 & U-T & 2 & KEEP & If removed, \{U,G\} disconnects from the rest. \\ \hline
-22 & T-M & 1 & KEEP & If removed, M becomes isolated. \\ \hline
+1 & H G & 22 & REMOVE & H still reaches G. \\ \hline
+2 & M B & 21 & REMOVE & M still reaches B  \\ \hline
+3 & T B & 20 & REMOVE & T still reaches B  \\ \hline
+4 & U B & 19 & REMOVE & U still reaches B \\ \hline
+5 & W B & 18 & REMOVE & W still reaches B  \\ \hline
+6 & W U & 17 & REMOVE & W still reaches U  \\ \hline
+7 & S M & 16 & REMOVE & S still reaches M \\ \hline
+8 & G T & 15 & REMOVE & G still reaches T  \\ \hline
+9 & G S & 14 & REMOVE & G still reaches S  \\ \hline
+10 & F B & 13 & KEEP & If removed, B becomes isolated. \\ \hline
+11 & F G & 12 & REMOVE & F still reaches G  \\ \hline
+12 & P M & 11 & REMOVE & P still reaches M  \\ \hline
+13 & P G & 10 & REMOVE & P still reaches G  \\ \hline
+14 & H T & 9 & KEEP & If removed, the graph splits \{G,U,T,M\} from \{H,S,W,F,P,B\}. \\ \hline
+15 & H P & 8 & REMOVE & H still reaches P  \\ \hline
+16 & H F & 7 & KEEP & If removed, \{F,P,B\} disconnects from the rest. \\ \hline
+17 & H S & 6 & KEEP & If removed, \{S,W\} disconnects from the rest. \\ \hline
+18 & P F & 5 & KEEP & If removed, P becomes isolated. \\ \hline
+19 & G U & 4 & KEEP & If removed, G becomes isolated. \\ \hline
+20 & S W & 3 & KEEP & If removed, W becomes isolated. \\ \hline
+21 & U T & 2 & KEEP & If removed, \{U,G\} disconnects from the rest. \\ \hline
+22 & T M & 1 & KEEP & If removed, M becomes isolated. \\ \hline
 \end{longtable}
 \endgroup
 \vspace{1em}
@@ -497,15 +497,15 @@ After processing all edges, the remaining edges (marked KEEP) form the MST.
 \begin{tabular}{|c|c|}
 \hline
 MST track segment & Cost \\ \hline
-T-M & 1 \\ \hline
-U-T & 2 \\ \hline
-S-W & 3 \\ \hline
-G-U & 4 \\ \hline
-P-F & 5 \\ \hline
-H-S & 6 \\ \hline
-H-F & 7 \\ \hline
-H-T & 9 \\ \hline
-F-B & 13 \\ \hline
+T M & 1 \\ \hline
+U T & 2 \\ \hline
+S W & 3 \\ \hline
+G U & 4 \\ \hline
+P F & 5 \\ \hline
+H S & 6 \\ \hline
+H F & 7 \\ \hline
+H T & 9 \\ \hline
+F B & 13 \\ \hline
 \end{tabular}
 \end{center}
 \vspace{1em}
@@ -516,7 +516,7 @@ One way to visualize the final tree (connectivity path) is:
 W - S - H - T - U - G, with branches H - F - P and F - B, and T - M.
 \clearpage
 \subsection{Graph Overview}
-The graphs below provide a visual summary of the Reverse-Delete decisions and the final MST structure.
+The graphs below provide a visual summary of the Reverse Delete decisions and the final MST structure.
 \vspace{1em}
 \textbf{Remove vs Keep Decisions:}
 \begin{center}
@@ -567,11 +567,11 @@ The graphs below provide a visual summary of the Reverse-Delete decisions and th
     \draw[kept] (H) -- node[above]      {\footnotesize 9} (T);
     \draw[kept] (F) -- node[left]       {\footnotesize 13}(B);
 
-    % Legend (top-left)
+    % Legend (top left)
     \draw[kept] (-6.1,6.8) -- (-4.7,6.8);
     \node[anchor=west,font=\footnotesize] at (-4.5,6.8) {KEPT in MST};
     \draw[removed] (-6.1,6.2) -- (-4.7,6.2);
-    \node[anchor=west,font=\footnotesize] at (-4.5,6.2) {REMOVED by Reverse-Delete};
+    \node[anchor=west,font=\footnotesize] at (-4.5,6.2) {REMOVED by Reverse Delete};
 \end{tikzpicture}
 }%
 \end{center}
@@ -621,3 +621,4 @@ These 9 solid segments form the final MST with total cost 50.
 \textbf{MST cost from the graph:} $1+2+3+4+5+6+7+9+13=50$.
 
 \end{document}
+
