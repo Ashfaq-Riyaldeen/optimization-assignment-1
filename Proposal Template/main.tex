@@ -116,7 +116,7 @@ Total server capacity: 40 CPU cores / 80 GB RAM / 400 GB storage = \textbf{20 vC
     \item $w_1 = 3,\; w_2 = 5,\; w_3 = 9$ (vCPU consumed per instance)
     \item $r_1 = 7{,}000,\; r_2 = 12{,}000,\; r_3 = 25{,}000$ (monthly profit in Rs. per instance)
 \end{itemize}
-
+\vspace{1em}
 \textbf{Decision Variables:}
 \begin{itemize}
     \item $x_k$ = number of instances of application type $k$ to host (non-negative integer), $k=1,2,3$
@@ -146,6 +146,7 @@ x_1, x_2, x_3 \in \{0,1,2,\ldots\}
 V_k(i) = \max_{0 \le x_k \le i/w_k} \left[ r_k x_k + V_{k+1}(i - w_k x_k) \right]
 \]
 
+\clearpage
 \subsection{Stage 3: ML Inference Server (w3 = 9, r3 = Rs. 25{,}000)}
 \[
 V_3(i)=\max_{0 \le x_3 \le i/9}\left[25{,}000\cdot x_3\right]
@@ -180,7 +181,7 @@ Remaining Capacity ($i$) & Optimal $x_3^\ast$ & $V_3(i)$ (Rs.) \\
 \bottomrule
 \end{tabular}
 \end{center}
-
+\clearpage
 \subsection{Stage 2: Mobile API Server + ML Inference (w2 = 5, r2 = Rs. 12{,}000)}
 \[
 V_2(i)=\max_{0 \le x_2 \le i/5}\left[12{,}000\cdot x_2 + V_3(i-5x_2)\right]
@@ -250,7 +251,7 @@ $x_1$ & $7{,}000\times x_1$ (Rs.) & Remaining capacity $(20-3x_1)$ & $V_2(20-3x_
 \end{center}
 
 \textbf{Optimal decision at Stage 1:} $x_1^\ast = 2$
-
+\clearpage
 \subsection{Traceback: Recovering the Optimal Solution}
 \begin{center}
 \begin{tabular}{c c c c c c}
@@ -268,17 +269,17 @@ Step & Stage & Remaining capacity & Optimal $x_k^\ast$ & vCPU used & Profit earn
 
 \subsection{Optimal Solution}
 \begin{quote}
-Host
-2 Web Application Servers, 
-1 Mobile API Server, and 
-1 ML Inference Server.
-
-Maximum monthly profit = Rs. 14{,}000 + Rs. 12{,}000 + Rs. 25{,}000 = Rs. 51{,}000
+Host:\\[0.3em]
+\hspace*{1em}2 Web Application Servers,\\
+\hspace*{1em}1 Mobile API Server, and\\
+\hspace*{1em}1 ML Inference Server.\\[0.5em]
+Maximum monthly profit: \\
+\hspace*{1em}Rs. 14{,}000 + Rs. 12{,}000 + Rs. 25{,}000 = Rs. 51{,}000
 \end{quote}
 
 \subsection{Why Greedy Fails}
 A greedy approach ranks applications by profit-per-vCPU (value-to-weight ratio):
-
+\vspace{1em}
 \begin{center}
 \begin{tabular}{l c c}
 \toprule
@@ -291,15 +292,16 @@ Web Application & $7{,}000/3 \approx \textbf{2{,}333}$ & 3rd \\
 \end{tabular}
 \end{center}
 
+\vspace{1em}
 \textbf{Greedy execution (capacity = 20 vCPU):}
 \begin{enumerate}
     \item Pick ML Inference (9 vCPU) $\rightarrow$ capacity remaining: 11 vCPU, profit: Rs. 25{,}000
     \item Pick ML Inference again (9 vCPU) $\rightarrow$ capacity remaining: 2 vCPU, profit: Rs. 50{,}000
     \item No application fits in 2 vCPU $\rightarrow$ \textbf{stop}
 \end{enumerate}
-
+\vspace{1em}
 \textbf{Greedy result:} $x_1=0,\; x_2=0,\; x_3=2 \rightarrow \textbf{Rs. 50{,}000}$ (2 vCPU wasted)
-
+\vspace{1em}
 \begin{center}
 \begin{tabular}{l c c c c c}
 \toprule
@@ -310,9 +312,10 @@ Greedy & 0 & 0 & 2 & $18/20$ & Rs. 50{,}000 \\
 \bottomrule
 \end{tabular}
 \end{center}
-
+\vspace{1em}
 So greedy wastes 2 vCPU and earns Rs. 1{,}000 less per month. The DP approach avoids this by checking
 every feasible combination at each stage, so no capacity goes unused unnecessarily.
+\clearpage
 
 \section{Network Optimization Using the Reverse-Delete MST Algorithm}
 \subsection{Emergency Fiber Network for Disaster Response}
