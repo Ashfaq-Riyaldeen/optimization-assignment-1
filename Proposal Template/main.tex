@@ -69,13 +69,6 @@
 \hypersetup{pageanchor=true}
 \renewcommand{\arraystretch}{1.15}
 
-% --------- Table of Contents ---------
-\clearpage
-\phantomsection
-\label{contents}
-\tableofcontents
-\clearpage
-
 % --------- Assignment Content ---------
 \section{HPC Cloud Server Resource Allocation (Knapsack Problem)}
 
@@ -150,15 +143,12 @@ x_1, x_2, x_3 \in \{0,1,2,\ldots\}
 
 \textbf{Recurrence Relation:}
 \[
-V_k(i) = \max \left\{ r_k x_k + V_{k+1}(i - w_k x_k) \right\}
-\]
-\[
-x_k \geq 0,\quad w_k x_k \leq i
+V_k(i) = \max_{0 \le x_k \le i/w_k} \left[ r_k x_k + V_{k+1}(i - w_k x_k) \right]
 \]
 
 \subsection{Stage 3: ML Inference Server (w3 = 9, r3 = Rs. 25{,}000)}
 \[
-V_3(i)=\max\{25{,}000\cdot x_3: x_3\geq 0,\; 9x_3\leq i\}
+V_3(i)=\max_{0 \le x_3 \le i/9}\left[25{,}000\cdot x_3\right]
 \]
 
 \begin{center}
@@ -193,7 +183,7 @@ Remaining Capacity ($i$) & Optimal $x_3^\ast$ & $V_3(i)$ (Rs.) \\
 
 \subsection{Stage 2: Mobile API Server + ML Inference (w2 = 5, r2 = Rs. 12{,}000)}
 \[
-V_2(i)=\max\{12{,}000\cdot x_2 + V_3(i-5x_2): x_2\geq 0,\; 5x_2\leq i\}
+V_2(i)=\max_{0 \le x_2 \le i/5}\left[12{,}000\cdot x_2 + V_3(i-5x_2)\right]
 \]
 
 \begin{center}
@@ -235,13 +225,10 @@ $V_2(i)$ (Rs.) \\
 }
 \end{center}
 
-\textbf{Note:} At $i=14$, $x_2=1$ gives $12{,}000 + V_3(9) = 12{,}000 + 25{,}000 = \textbf{Rs. 37{,}000}$, which beats
-the ML-only option of $V_3(14)=25{,}000$. At $i=18$, two ML instances ($V_3(18)=50{,}000$) beat any
-Mobile API combination.
 
 \subsection{Stage 1: All Application Types (Capacity = 20 vCPU)}
 \[
-V_1(20)=\max\{7{,}000\cdot x_1 + V_2(20-3x_1): x_1\geq 0,\; 3x_1\leq 20\}
+V_1(20)=\max_{0 \le x_1 \le 20/3}\left[7{,}000\cdot x_1 + V_2(20-3x_1)\right]
 \]
 
 \begin{center}
@@ -252,7 +239,7 @@ $x_1$ & $7{,}000\times x_1$ (Rs.) & Remaining capacity $(20-3x_1)$ & $V_2(20-3x_
 \midrule
 0 & 0 & 20 & 50{,}000 & 50{,}000 \\
 1 & 7{,}000 & 17 & 37{,}000 & 44{,}000 \\
-\textbf{2} & \textbf{14{,}000} & \textbf{14} & \textbf{37{,}000} & \textbf{51{,}000 $\leftarrow$ max} \\
+\textbf{2} & \textbf{14{,}000} & \textbf{14} & \textbf{37{,}000} & \textbf{51{,}000} \\
 3 & 21{,}000 & 11 & 25{,}000 & 46{,}000 \\
 4 & 28{,}000 & 8 & 12{,}000 & 40{,}000 \\
 5 & 35{,}000 & 5 & 12{,}000 & 47{,}000 \\
@@ -281,9 +268,12 @@ Step & Stage & Remaining capacity & Optimal $x_k^\ast$ & vCPU used & Profit earn
 
 \subsection{Optimal Solution}
 \begin{quote}
-\textbf{Host 2 Web Application Servers, 1 Mobile API Server, and 1 ML Inference Server.}
+Host
+2 Web Application Servers, 
+1 Mobile API Server, and 
+1 ML Inference Server.
 
-\textbf{Maximum monthly profit = Rs. 14{,}000 + Rs. 12{,}000 + Rs. 25{,}000 = Rs. 51{,}000}
+Maximum monthly profit = Rs. 14{,}000 + Rs. 12{,}000 + Rs. 25{,}000 = Rs. 51{,}000
 \end{quote}
 
 \subsection{Why Greedy Fails}
