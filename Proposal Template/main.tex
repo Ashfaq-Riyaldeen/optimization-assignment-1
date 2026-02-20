@@ -13,8 +13,14 @@
 \usepackage{amssymb}
 \usepackage{mathptmx}
 \usepackage{tikz}
+\usepackage[none]{hyphenat}
 \usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
 \usetikzlibrary{arrows.meta,positioning}
+
+% Disable automatic hyphenation
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\sloppy
 
 \geometry{
     left=30mm,
@@ -58,9 +64,10 @@
 
         {\Large \textbf{Group Members}}\\[0.45cm]
         \renewcommand{\arraystretch}{1.3}
-        \begin{tabular}{@{}>{\bfseries}p{0.14\textwidth}p{0.52\textwidth}p{0.24\textwidth}@{}}
-            01 & Ashfaq M.R.M & EG/2021/4417 \\
-            02 & Munsif M.F.A & EG/2021/4684 \\
+        \begin{tabular}{|>{\bfseries}p{0.14\textwidth}|p{0.52\textwidth}|p{0.24\textwidth}|}
+            \hline
+            01 & Ashfaq M.R.M & EG/2021/4417 \\ \hline
+            02 & Munsif M.F.A & EG/2021/4684 \\ \hline
         \end{tabular}
         \vspace*{0.15cm}
     \end{minipage}
@@ -80,14 +87,12 @@ The server has a limited compute capacity shared among all hosted applications.
 LankaCloud offers three types of managed application hosting packages:
 
 \begin{center}
-\begin{tabular}{c l c c}
-\toprule
-$k$ & Application Type & vCPU per instance & Monthly Profit per instance \\
-\midrule
-1 & Web Application Server & 3 vCPU & Rs. 7{,}000 \\
-2 & Mobile API Server & 5 vCPU & Rs. 12{,}000 \\
-3 & ML Inference Server & 9 vCPU & Rs. 25{,}000 \\
-\bottomrule
+\begin{tabular}{|c|l|c|c|}
+\hline
+$k$ & Application Type & vCPU per instance & Monthly Profit per instance \\ \hline
+1 & Web Application Server & 3 vCPU & Rs. 7{,}000 \\ \hline
+2 & Mobile API Server & 5 vCPU & Rs. 12{,}000 \\ \hline
+3 & ML Inference Server & 9 vCPU & Rs. 25{,}000 \\ \hline
 \end{tabular}
 \end{center}
 
@@ -153,32 +158,30 @@ V_3(i)=\max_{0 \le x_3 \le i/9}\left[25{,}000\cdot x_3\right]
 \]
 
 \begin{center}
-\begin{tabular}{c c c}
-\toprule
-Remaining Capacity ($i$) & Optimal $x_3^\ast$ & $V_3(i)$ (Rs.) \\
-\midrule
-0 & 0 & 0 \\
-1 & 0 & 0 \\
-2 & 0 & 0 \\
-3 & 0 & 0 \\
-4 & 0 & 0 \\
-5 & 0 & 0 \\
-6 & 0 & 0 \\
-7 & 0 & 0 \\
-8 & 0 & 0 \\
-9 & 1 & 25{,}000 \\
-10 & 1 & 25{,}000 \\
-11 & 1 & 25{,}000 \\
-12 & 1 & 25{,}000 \\
-13 & 1 & 25{,}000 \\
-14 & 1 & 25{,}000 \\
-15 & 1 & 25{,}000 \\
-16 & 1 & 25{,}000 \\
-17 & 1 & 25{,}000 \\
-18 & 2 & 50{,}000 \\
-19 & 2 & 50{,}000 \\
-20 & 2 & 50{,}000 \\
-\bottomrule
+\begin{tabular}{|c|c|c|}
+\hline
+Remaining Capacity ($i$) & Optimal $x_3^\ast$ & $V_3(i)$ (Rs.) \\ \hline
+0 & 0 & 0 \\ \hline
+1 & 0 & 0 \\ \hline
+2 & 0 & 0 \\ \hline
+3 & 0 & 0 \\ \hline
+4 & 0 & 0 \\ \hline
+5 & 0 & 0 \\ \hline
+6 & 0 & 0 \\ \hline
+7 & 0 & 0 \\ \hline
+8 & 0 & 0 \\ \hline
+9 & 1 & 25{,}000 \\ \hline
+10 & 1 & 25{,}000 \\ \hline
+11 & 1 & 25{,}000 \\ \hline
+12 & 1 & 25{,}000 \\ \hline
+13 & 1 & 25{,}000 \\ \hline
+14 & 1 & 25{,}000 \\ \hline
+15 & 1 & 25{,}000 \\ \hline
+16 & 1 & 25{,}000 \\ \hline
+17 & 1 & 25{,}000 \\ \hline
+18 & 2 & 50{,}000 \\ \hline
+19 & 2 & 50{,}000 \\ \hline
+20 & 2 & 50{,}000 \\ \hline
 \end{tabular}
 \end{center}
 \clearpage
@@ -189,8 +192,8 @@ V_2(i)=\max_{0 \le x_2 \le i/5}\left[12{,}000\cdot x_2 + V_3(i-5x_2)\right]
 
 \begin{center}
 \resizebox{\textwidth}{!}{
-\begin{tabular}{c c c c c c c c}
-\toprule
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
 $i$ &
 $x_2{=}0: V_3(i)$ &
 $x_2{=}1: 12k{+}V_3(i{-}5)$ &
@@ -198,30 +201,28 @@ $x_2{=}2: 24k{+}V_3(i{-}10)$ &
 $x_2{=}3: 36k{+}V_3(i{-}15)$ &
 $x_2{=}4: 48k{+}V_3(i{-}20)$ &
 Optimal $x_2^\ast$ &
-$V_2(i)$ (Rs.) \\
-\midrule
-0  & 0 & \textemdash & \textemdash & \textemdash & \textemdash & 0 & 0 \\
-1  & 0 & \textemdash & \textemdash & \textemdash & \textemdash & 0 & 0 \\
-2  & 0 & \textemdash & \textemdash & \textemdash & \textemdash & 0 & 0 \\
-3  & 0 & \textemdash & \textemdash & \textemdash & \textemdash & 0 & 0 \\
-4  & 0 & \textemdash & \textemdash & \textemdash & \textemdash & 0 & 0 \\
-5  & 0 & 12{,}000 & \textemdash & \textemdash & \textemdash & 1 & 12{,}000 \\
-6  & 0 & 12{,}000 & \textemdash & \textemdash & \textemdash & 1 & 12{,}000 \\
-7  & 0 & 12{,}000 & \textemdash & \textemdash & \textemdash & 1 & 12{,}000 \\
-8  & 0 & 12{,}000 & \textemdash & \textemdash & \textemdash & 1 & 12{,}000 \\
-9  & 25{,}000 & 12{,}000 & \textemdash & \textemdash & \textemdash & 0 & 25{,}000 \\
-10 & 25{,}000 & 12{,}000 & 24{,}000 & \textemdash & \textemdash & 0 & 25{,}000 \\
-11 & 25{,}000 & 12{,}000 & 24{,}000 & \textemdash & \textemdash & 0 & 25{,}000 \\
-12 & 25{,}000 & 12{,}000 & 24{,}000 & \textemdash & \textemdash & 0 & 25{,}000 \\
-13 & 25{,}000 & 12{,}000 & 24{,}000 & \textemdash & \textemdash & 0 & 25{,}000 \\
-14 & 25{,}000 & \textbf{37{,}000} & 24{,}000 & \textemdash & \textemdash & 1 & 37{,}000 \\
-15 & 25{,}000 & \textbf{37{,}000} & 24{,}000 & 36{,}000 & \textemdash & 1 & 37{,}000 \\
-16 & 25{,}000 & \textbf{37{,}000} & 24{,}000 & 36{,}000 & \textemdash & 1 & 37{,}000 \\
-17 & 25{,}000 & \textbf{37{,}000} & 24{,}000 & 36{,}000 & \textemdash & 1 & 37{,}000 \\
-18 & \textbf{50{,}000} & 37{,}000 & 24{,}000 & 36{,}000 & \textemdash & 0 & 50{,}000 \\
-19 & \textbf{50{,}000} & 37{,}000 & 49{,}000 & 36{,}000 & \textemdash & 0 & 50{,}000 \\
-20 & \textbf{50{,}000} & 37{,}000 & 49{,}000 & 36{,}000 & 48{,}000 & 0 & 50{,}000 \\
-\bottomrule
+$V_2(i)$ (Rs.) \\ \hline
+0  & 0 &  &  &  &  & 0 & 0 \\ \hline
+1  & 0 &  &  &  &  & 0 & 0 \\ \hline
+2  & 0 &  &  &  &  & 0 & 0 \\ \hline
+3  & 0 &  &  &  &  & 0 & 0 \\ \hline
+4  & 0 &  &  &  &  & 0 & 0 \\ \hline
+5  & 0 & 12{,}000 &  &  &  & 1 & 12{,}000 \\ \hline
+6  & 0 & 12{,}000 &  &  &  & 1 & 12{,}000 \\ \hline
+7  & 0 & 12{,}000 &  &  &  & 1 & 12{,}000 \\ \hline
+8  & 0 & 12{,}000 &  &  &  & 1 & 12{,}000 \\ \hline
+9  & 25{,}000 & 12{,}000 &  &  &  & 0 & 25{,}000 \\ \hline
+10 & 25{,}000 & 12{,}000 & 24{,}000 &  &  & 0 & 25{,}000 \\ \hline
+11 & 25{,}000 & 12{,}000 & 24{,}000 &  &  & 0 & 25{,}000 \\ \hline
+12 & 25{,}000 & 12{,}000 & 24{,}000 &  &  & 0 & 25{,}000 \\ \hline
+13 & 25{,}000 & 12{,}000 & 24{,}000 &  &  & 0 & 25{,}000 \\ \hline
+14 & 25{,}000 & \textbf{37{,}000} & 24{,}000 &  &  & 1 & 37{,}000 \\ \hline
+15 & 25{,}000 & \textbf{37{,}000} & 24{,}000 & 36{,}000 &  & 1 & 37{,}000 \\ \hline
+16 & 25{,}000 & \textbf{37{,}000} & 24{,}000 & 36{,}000 &  & 1 & 37{,}000 \\ \hline
+17 & 25{,}000 & \textbf{37{,}000} & 24{,}000 & 36{,}000 &  & 1 & 37{,}000 \\ \hline
+18 & \textbf{50{,}000} & 37{,}000 & 24{,}000 & 36{,}000 &  & 0 & 50{,}000 \\ \hline
+19 & \textbf{50{,}000} & 37{,}000 & 49{,}000 & 36{,}000 &  & 0 & 50{,}000 \\ \hline
+20 & \textbf{50{,}000} & 37{,}000 & 49{,}000 & 36{,}000 & 48{,}000 & 0 & 50{,}000 \\ \hline
 \end{tabular}
 }
 \end{center}
@@ -234,18 +235,16 @@ V_1(20)=\max_{0 \le x_1 \le 20/3}\left[7{,}000\cdot x_1 + V_2(20-3x_1)\right]
 
 \begin{center}
 \resizebox{\textwidth}{!}{
-\begin{tabular}{c c c c c}
-\toprule
-$x_1$ & $7{,}000\times x_1$ (Rs.) & Remaining capacity $(20-3x_1)$ & $V_2(20-3x_1)$ (Rs.) & Total (Rs.) \\
-\midrule
-0 & 0 & 20 & 50{,}000 & 50{,}000 \\
-1 & 7{,}000 & 17 & 37{,}000 & 44{,}000 \\
-\textbf{2} & \textbf{14{,}000} & \textbf{14} & \textbf{37{,}000} & \textbf{51{,}000} \\
-3 & 21{,}000 & 11 & 25{,}000 & 46{,}000 \\
-4 & 28{,}000 & 8 & 12{,}000 & 40{,}000 \\
-5 & 35{,}000 & 5 & 12{,}000 & 47{,}000 \\
-6 & 42{,}000 & 2 & 0 & 42{,}000 \\
-\bottomrule
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$x_1$ & $7{,}000\times x_1$ (Rs.) & Remaining capacity $(20-3x_1)$ & $V_2(20-3x_1)$ (Rs.) & Total (Rs.) \\ \hline
+0 & 0 & 20 & 50{,}000 & 50{,}000 \\ \hline
+1 & 7{,}000 & 17 & 37{,}000 & 44{,}000 \\ \hline
+\textbf{2} & \textbf{14{,}000} & \textbf{14} & \textbf{37{,}000} & \textbf{51{,}000} \\ \hline
+3 & 21{,}000 & 11 & 25{,}000 & 46{,}000 \\ \hline
+4 & 28{,}000 & 8 & 12{,}000 & 40{,}000 \\ \hline
+5 & 35{,}000 & 5 & 12{,}000 & 47{,}000 \\ \hline
+6 & 42{,}000 & 2 & 0 & 42{,}000 \\ \hline
 \end{tabular}
 }
 \end{center}
@@ -254,14 +253,12 @@ $x_1$ & $7{,}000\times x_1$ (Rs.) & Remaining capacity $(20-3x_1)$ & $V_2(20-3x_
 \clearpage
 \subsection{Traceback: Recovering the Optimal Solution}
 \begin{center}
-\begin{tabular}{c c c c c c}
-\toprule
-Step & Stage & Remaining capacity & Optimal $x_k^\ast$ & vCPU used & Profit earned \\
-\midrule
-1 & $k=1$ & 20 & $x_1^\ast=\textbf{2}$ & $2\times3=6$ & $2\times7{,}000=\text{Rs. }14{,}000$ \\
-2 & $k=2$ & $20-6=14$ & $x_2^\ast=\textbf{1}$ & $1\times5=5$ & $1\times12{,}000=\text{Rs. }12{,}000$ \\
-3 & $k=3$ & $14-5=9$ & $x_3^\ast=\textbf{1}$ & $1\times9=9$ & $1\times25{,}000=\text{Rs. }25{,}000$ \\
-\bottomrule
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+Step & Stage & Remaining capacity & Optimal $x_k^\ast$ & vCPU used & Profit earned \\ \hline
+1 & $k=1$ & 20 & $x_1^\ast=\textbf{2}$ & $2\times3=6$ & $2\times7{,}000=\text{Rs. }14{,}000$ \\ \hline
+2 & $k=2$ & $20-6=14$ & $x_2^\ast=\textbf{1}$ & $1\times5=5$ & $1\times12{,}000=\text{Rs. }12{,}000$ \\ \hline
+3 & $k=3$ & $14-5=9$ & $x_3^\ast=\textbf{1}$ & $1\times9=9$ & $1\times25{,}000=\text{Rs. }25{,}000$ \\ \hline
 \end{tabular}
 \end{center}
 
@@ -281,14 +278,12 @@ Maximum monthly profit: \\
 A greedy approach ranks applications by profit-per-vCPU (value-to-weight ratio):
 \vspace{1em}
 \begin{center}
-\begin{tabular}{l c c}
-\toprule
-Application Type & Profit/vCPU & Greedy rank \\
-\midrule
-ML Inference Server & $25{,}000/9 \approx \textbf{2{,}778}$ & 1st \\
-Mobile API Server & $12{,}000/5 = \textbf{2{,}400}$ & 2nd \\
-Web Application & $7{,}000/3 \approx \textbf{2{,}333}$ & 3rd \\
-\bottomrule
+\begin{tabular}{|l|c|c|}
+\hline
+Application Type & Profit/vCPU & Greedy rank \\ \hline
+ML Inference Server & $25{,}000/9 \approx \textbf{2{,}778}$ & 1st \\ \hline
+Mobile API Server & $12{,}000/5 = \textbf{2{,}400}$ & 2nd \\ \hline
+Web Application & $7{,}000/3 \approx \textbf{2{,}333}$ & 3rd \\ \hline
 \end{tabular}
 \end{center}
 
@@ -303,13 +298,11 @@ Web Application & $7{,}000/3 \approx \textbf{2{,}333}$ & 3rd \\
 \textbf{Greedy result:} $x_1=0,\; x_2=0,\; x_3=2 \rightarrow \textbf{Rs. 50{,}000}$ (2 vCPU wasted)
 \vspace{1em}
 \begin{center}
-\begin{tabular}{l c c c c c}
-\toprule
-Method & $x_1$ & $x_2$ & $x_3$ & vCPU used & Monthly Profit \\
-\midrule
-Greedy & 0 & 0 & 2 & $18/20$ & Rs. 50{,}000 \\
-\textbf{DP} & \textbf{2} & \textbf{1} & \textbf{1} & \textbf{20/20} & \textbf{Rs. 51{,}000} \\
-\bottomrule
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+Method & $x_1$ & $x_2$ & $x_3$ & vCPU used & Monthly Profit \\ \hline
+Greedy & 0 & 0 & 2 & $18/20$ & Rs. 50{,}000 \\ \hline
+\textbf{DP} & \textbf{2} & \textbf{1} & \textbf{1} & \textbf{20/20} & \textbf{Rs. 51{,}000} \\ \hline
 \end{tabular}
 \end{center}
 \vspace{1em}
@@ -318,53 +311,62 @@ every feasible combination at each stage, so no capacity goes unused unnecessari
 \clearpage
 
 \section{Network Optimization Using the Reverse-Delete MST Algorithm}
-\subsection{Emergency Fiber Network for Disaster Response}
+\subsection{Railway Track Expansion in a Developing Region}
 
-A city needs to connect 10 critical facilities with a fiber communication network that can hold
-up during floods and cyclones. Engineers have surveyed several possible cable routes along
-existing roads. The goal is to make sure all facilities can reach each other (directly or via
-other nodes) while keeping total installation cost as low as possible.
+\textbf{Scenario:} A country plans to connect several newly developed towns with
+railway tracks. Planners have identified feasible track corridors between towns, each with an
+estimated construction cost.
 
-\subsection{Graph Model}
-\subsubsection{Facilities (Vertices)}
+\textbf{Objective:}
 \begin{itemize}
-    \item H: Main Hospital
-    \item P: Police HQ
-    \item F: Fire Station
-    \item G: City Hall / Disaster Control Center
-    \item W: Water Treatment Plant
-    \item U: Power Substation
-    \item T: Telecom Hub
-    \item S: Central School (relief center)
-    \item M: Main Market (supplies hub)
-    \item B: Bus Depot (evacuation transport)
+    \item Connect all towns.
+    \item Minimize total construction cost.
+    \item Avoid circular routes during initial construction.
 \end{itemize}
 
-\subsubsection{Candidate Fiber Links (Edges with Costs)}
-Costs are expressed in generic installation cost units. The network is undirected.
+\textbf{Why it fits:} Railway planning often starts with minimum-cost connectivity before adding
+redundancy later.
+
+\subsection{Graph Model}
+We model the railway expansion plan as a connected, undirected, weighted graph where each town is
+a vertex and each candidate track segment is an edge weighted by construction cost.
+\subsubsection{Towns (Vertices)}
+\begin{itemize}
+    \item H: Hilltown
+    \item P: Portville
+    \item F: Forest Junction
+    \item G: Greenfield
+    \item W: Westhaven
+    \item U: Uplands
+    \item T: Transit Junction
+    \item S: Springside
+    \item M: Midtown
+    \item B: Brookvale
+\end{itemize}
+
+\subsubsection{Candidate Railway Track Segments (Edges with Costs)}
+Costs are expressed in generic construction cost units. The graph is undirected.
 
 \begin{center}
-\begin{tabular}{c c c c}
-\toprule
-Edge & Cost & Edge & Cost \\
-\midrule
-H-G & 22 & M-B & 21 \\
-T-B & 20 & U-B & 19 \\
-W-B & 18 & W-U & 17 \\
-S-M & 16 & G-T & 15 \\
-G-S & 14 & F-B & 13 \\
-F-G & 12 & P-M & 11 \\
-P-G & 10 & H-T & 9 \\
-H-P & 8 & H-F & 7 \\
-H-S & 6 & P-F & 5 \\
-G-U & 4 & S-W & 3 \\
-U-T & 2 & T-M & 1 \\
-\bottomrule
+\begin{tabular}{|c|c|c|c|}
+\hline
+Edge & Cost & Edge & Cost \\ \hline
+H-G & 22 & M-B & 21 \\ \hline
+T-B & 20 & U-B & 19 \\ \hline
+W-B & 18 & W-U & 17 \\ \hline
+S-M & 16 & G-T & 15 \\ \hline
+G-S & 14 & F-B & 13 \\ \hline
+F-G & 12 & P-M & 11 \\ \hline
+P-G & 10 & H-T & 9 \\ \hline
+H-P & 8 & H-F & 7 \\ \hline
+H-S & 6 & P-F & 5 \\ \hline
+G-U & 4 & S-W & 3 \\ \hline
+U-T & 2 & T-M & 1 \\ \hline
 \end{tabular}
 \end{center}
 
-\subsubsection{Candidate Network Graph (Weighted)}
-The weighted graph below visualizes the surveyed fiber links (edge labels are costs):
+\subsubsection{Candidate Railway Graph (Weighted)}
+The weighted graph below visualizes the candidate track segments (edge labels are costs):
 
 \begin{center}
 \resizebox{\textwidth}{!}{%
@@ -388,7 +390,7 @@ The weighted graph below visualizes the surveyed fiber links (edge labels are co
     \node[facility] (F) at (7.79,-2.22)  {F};
     \node[facility] (P) at (7.06, 5.60)  {P};
 
-    % All candidate links (edges) with costs
+    % All candidate segments (edges) with costs
     \draw[link] (H) -- node[cost,pos=0.55,above] {22} (G);
     \draw[link] (M) -- node[cost,pos=0.55,below] {21} (B);
     \draw[link] (T) -- node[cost,pos=0.55,below] {20} (B);
@@ -415,9 +417,9 @@ The weighted graph below visualizes the surveyed fiber links (edge labels are co
 }%
 \end{center}
 
-This is essentially a Minimum Spanning Tree (MST) problem — we want the cheapest set of links
-that still keeps all 10 facilities connected. With 10 nodes, the spanning tree will always have
-exactly 9 edges.
+This is essentially a Minimum Spanning Tree (MST) problem. We want the cheapest set of track
+segments that still keeps all 10 towns connected. Avoiding circular routes corresponds to
+building a spanning tree; with 10 towns, the MST will have exactly 9 track segments.
 
 \subsection{Selected MST Technique: Reverse-Delete Algorithm}
 
@@ -430,15 +432,15 @@ edges in the cycle, just at a lower cost.
 
 \subsubsection{Steps}
 \begin{enumerate}
-    \item Take the full graph with all candidate links.
+    \item Take the full graph with all candidate track segments.
     \item Sort all edges from highest cost to lowest.
-    \item Go through each edge: try removing it. If the network is still connected, drop it for good.
+    \item Go through each edge: try removing it. If the railway network is still connected, drop it for good.
     If removing it disconnects anything, put it back and move on.
     \item Whatever edges remain at the end form the MST.
 \end{enumerate}
 
-This approach suits the scenario well — the city already has a full list of proposed cable routes,
-and the algorithm trims the expensive ones first without ever breaking connectivity.
+This approach suits railway planning well. Planners can start from a full list of feasible track
+corridors, and the algorithm trims the expensive segments first without ever breaking connectivity.
 
 \subsection{Step-by-Step Application of Reverse-Delete}
 \subsubsection{Edge Order (Descending)}
@@ -446,69 +448,65 @@ Edges are processed from highest cost to lowest cost:
 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1.
 
 \subsubsection{Reverse-Delete Decision Table}
-Each edge is checked in order — if removing it keeps the graph connected it gets deleted, otherwise it stays.
+Each edge is checked in order. If removing it keeps the graph connected it gets deleted, otherwise it stays.
 
 \begingroup
 \small
 \setlength{\tabcolsep}{3pt}
-\begin{longtable}{c c c c p{8.5cm}}
-\toprule
-Step & Edge & Cost & Decision & Connectivity check (reason) \\
-\midrule
+\begin{longtable}{|c|c|c|c|p{8.5cm}|}
+\hline
+Step & Edge & Cost & Decision & Connectivity check (reason) \\ \hline
 \endfirsthead
-\toprule
-Step & Edge & Cost & Decision & Connectivity check (reason) \\
-\midrule
+\hline
+Step & Edge & Cost & Decision & Connectivity check (reason) \\ \hline
 \endhead
-\bottomrule
+\hline
 \endfoot
-1 & H-G & 22 & REMOVE & H still reaches G via H-T-U-G. \\
-2 & M-B & 21 & REMOVE & M still reaches B via M-T-B (later replaced by M-T-U-B paths; at this step B-links still exist). \\
-3 & T-B & 20 & REMOVE & T still reaches B via T-U-B. \\
-4 & U-B & 19 & REMOVE & U still reaches B via U-W-B. \\
-5 & W-B & 18 & REMOVE & W still reaches B via W-U-G-F-B. \\
-6 & W-U & 17 & REMOVE & W still reaches U via W-S-H-T-U. \\
-7 & S-M & 16 & REMOVE & S still reaches M via S-H-T-M. \\
-8 & G-T & 15 & REMOVE & G still reaches T via G-U-T. \\
-9 & G-S & 14 & REMOVE & G still reaches S via G-U-T-H-S. \\
-10 & F-B & 13 & KEEP & If removed, B becomes isolated (all other B links have already been deleted). \\
-11 & F-G & 12 & REMOVE & F still reaches G via F-H-T-U-G. \\
-12 & P-M & 11 & REMOVE & P still reaches M via P-F-H-T-M. \\
-13 & P-G & 10 & REMOVE & P still reaches G via P-F-H-T-U-G. \\
-14 & H-T & 9 & KEEP & If removed, the graph splits \{G,U,T,M\} from \{H,S,W,F,P,B\}. \\
-15 & H-P & 8 & REMOVE & H still reaches P via H-F-P. \\
-16 & H-F & 7 & KEEP & If removed, \{F,P,B\} disconnects from the rest. \\
-17 & H-S & 6 & KEEP & If removed, \{S,W\} disconnects (S has no other remaining links). \\
-18 & P-F & 5 & KEEP & If removed, P becomes isolated (H-P already deleted). \\
-19 & G-U & 4 & KEEP & If removed, G becomes isolated (all other G links were deleted). \\
-20 & S-W & 3 & KEEP & If removed, W becomes isolated (W-U and W-B were deleted). \\
-21 & U-T & 2 & KEEP & If removed, \{U,G\} disconnects from the rest. \\
-22 & T-M & 1 & KEEP & If removed, M becomes isolated (S-M and P-M were deleted). \\
+1 & H-G & 22 & REMOVE & H still reaches G via H-T-U-G. \\ \hline
+2 & M-B & 21 & REMOVE & M still reaches B via M-T-B (later replaced by M-T-U-B paths; at this step B connections still exist). \\ \hline
+3 & T-B & 20 & REMOVE & T still reaches B via T-U-B. \\ \hline
+4 & U-B & 19 & REMOVE & U still reaches B via U-W-B. \\ \hline
+5 & W-B & 18 & REMOVE & W still reaches B via W-U-G-F-B. \\ \hline
+6 & W-U & 17 & REMOVE & W still reaches U via W-S-H-T-U. \\ \hline
+7 & S-M & 16 & REMOVE & S still reaches M via S-H-T-M. \\ \hline
+8 & G-T & 15 & REMOVE & G still reaches T via G-U-T. \\ \hline
+9 & G-S & 14 & REMOVE & G still reaches S via G-U-T-H-S. \\ \hline
+10 & F-B & 13 & KEEP & If removed, B becomes isolated (all other B connections have already been deleted). \\ \hline
+11 & F-G & 12 & REMOVE & F still reaches G via F-H-T-U-G. \\ \hline
+12 & P-M & 11 & REMOVE & P still reaches M via P-F-H-T-M. \\ \hline
+13 & P-G & 10 & REMOVE & P still reaches G via P-F-H-T-U-G. \\ \hline
+14 & H-T & 9 & KEEP & If removed, the graph splits \{G,U,T,M\} from \{H,S,W,F,P,B\}. \\ \hline
+15 & H-P & 8 & REMOVE & H still reaches P via H-F-P. \\ \hline
+16 & H-F & 7 & KEEP & If removed, \{F,P,B\} disconnects from the rest. \\ \hline
+17 & H-S & 6 & KEEP & If removed, \{S,W\} disconnects (S has no other remaining connections). \\ \hline
+18 & P-F & 5 & KEEP & If removed, P becomes isolated (H-P already deleted). \\ \hline
+19 & G-U & 4 & KEEP & If removed, G becomes isolated (all other G connections were deleted). \\ \hline
+20 & S-W & 3 & KEEP & If removed, W becomes isolated (W-U and W-B were deleted). \\ \hline
+21 & U-T & 2 & KEEP & If removed, \{U,G\} disconnects from the rest. \\ \hline
+22 & T-M & 1 & KEEP & If removed, M becomes isolated (S-M and P-M were deleted). \\ \hline
 \end{longtable}
 \endgroup
 
-\subsection{Final MST and Minimum Total Cost}
+\subsection{Final MST and Minimum Total Construction Cost}
 After processing all edges, the remaining edges (marked KEEP) form the MST.
 
 \begin{center}
-\begin{tabular}{c c}
-\toprule
-MST edge & Cost \\
-\midrule
-T-M & 1 \\
-U-T & 2 \\
-S-W & 3 \\
-G-U & 4 \\
-P-F & 5 \\
-H-S & 6 \\
-H-F & 7 \\
-H-T & 9 \\
-F-B & 13 \\
-\bottomrule
+\begin{tabular}{|c|c|}
+\hline
+MST track segment & Cost \\ \hline
+T-M & 1 \\ \hline
+U-T & 2 \\ \hline
+S-W & 3 \\ \hline
+G-U & 4 \\ \hline
+P-F & 5 \\ \hline
+H-S & 6 \\ \hline
+H-F & 7 \\ \hline
+H-T & 9 \\ \hline
+F-B & 13 \\ \hline
 \end{tabular}
 \end{center}
 
-Total minimum cost $= 1 + 2 + 3 + 4 + 5 + 6 + 7 + 9 + 13 = 50$.
+Total minimum construction cost $= 1 + 2 + 3 + 4 + 5 + 6 + 7 + 9 + 13 = 50$.
 
 One way to visualize the final tree (connectivity path) is:
 
@@ -575,11 +573,11 @@ The graphs below provide a visual summary of the Reverse-Delete decisions and th
 }%
 \end{center}
 
-Dashed links were removed because the network stayed connected without them. Solid links
-are the ones that had to be kept — removing any of them would have split the network.
-These 9 solid links form the final MST with total cost 50.
+Dashed track segments were removed because the railway network stayed connected without them.
+Solid segments are the ones that had to be kept. Removing any of them would have split the network.
+These 9 solid segments form the final MST with total cost 50.
 
-\textbf{Final MST (selected links only):}
+\textbf{Final MST (selected track segments only):}
 \begin{center}
 \resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[
