@@ -113,20 +113,6 @@ metric. Each vCPU unit represents a fixed bundle of:
     \item 20 GB SSD storage
 \end{itemize}
 
-Application resource requirements expressed in vCPU units:
-
-\begin{center}
-\begin{tabular}{l c c c c}
-\toprule
-Application Type & CPU cores & RAM & Storage & vCPU units \\
-\midrule
-Web Application Server & 6 cores & 8 GB & 40 GB & \textbf{3 vCPU} \\
-Mobile API Server & 10 cores & 20 GB & 100 GB & \textbf{5 vCPU} \\
-ML Inference Server & 18 cores & 36 GB & 180 GB & \textbf{9 vCPU} \\
-\bottomrule
-\end{tabular}
-\end{center}
-
 Total server capacity: 40 CPU cores / 80 GB RAM / 400 GB storage = \textbf{20 vCPU units}.
 
 \subsection{Mathematical Formulation}
@@ -158,27 +144,9 @@ Total server capacity: 40 CPU cores / 80 GB RAM / 400 GB storage = \textbf{20 vC
 x_1, x_2, x_3 \in \{0,1,2,\ldots\}
 \]
 
-Each application type can be hosted multiple times, so $x_k$ is a non-negative integer with no upper
-bound. This makes it an \textbf{unbounded integer programme} — Simplex cannot handle integrality
-constraints, so we use \textbf{Dynamic Programming} instead.
+
 
 \subsection{Dynamic Programming Formulation}
-\textbf{Stages:} Application types $k=1,2,3$ (processed from $k=3$ down to $k=1$)
-
-\textbf{State:} Remaining server capacity $i$, where $0 \leq i \leq 20$
-
-\textbf{Optimal Value Function:}
-\[
-V_k(i) = \text{maximum monthly profit achievable from application types } k,k+1,\ldots,3
-\]
-\[
-\text{with remaining capacity } i
-\]
-
-\textbf{Boundary Condition:}
-\[
-V_4(i) = 0 \quad \text{for all } i
-\]
 
 \textbf{Recurrence Relation:}
 \[
